@@ -1,0 +1,11 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Large final project from Udemy Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyle Olson",
+  "license": "ISC"
+}
