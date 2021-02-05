@@ -2,7 +2,8 @@
 <div class="row">
     <h1 class="text-center">Edit Campground</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form">
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form"
+            enctype="multipart/form-data">
             <div class="mb-3">
                 <label class='form-label' for="title">Title</label>
                 <input class='form-control' type="text" id="title" name='campground[title]'
@@ -20,12 +21,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class='form-label' for="image">Image Url</label>
-                <input class='form-control' type="text" id="image" name='campground[image]'
-                    value='<%= campground.image %>' required>
-                <div class="invalid-feedback">
-                    Please provide a valid url.
-                </div>
+                <label for="image" class="form-label">Upload additional images</label>
+                <input class="form-control" type="file" id="image" name="image" multiple>
             </div>
             <div class="mb-3">
                 <label class='form-label' for="price">Campground Price</label>
@@ -47,6 +44,15 @@
                 <div class="invalid-feedback">
                     Please provide a description.
                 </div>
+            </div>
+            <div class="mb-3">
+                <% campground.images.forEach((img, i) => { %>
+                <img src="<%= img.thumbnail %>" alt="" class="img-thumbnail">
+                <div class="form-check-inline">
+                    <input type="checkbox" id='image-<%= i %>' name="deleteImages[]" value="<%= img.filename %>">
+                </div>
+                <label for="image-<%= i %>">Delete?</label>
+                <% }) %>
             </div>
             <div class="mb-3">
                 <button class="btn btn-info">Save Changes</button>
