@@ -7,7 +7,12 @@
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-4">
+                <% if (camp.images.length) { %>
                 <img class="img-fluid" alt="" src='<%= camp.images[0].url %>'>
+                <% } else { %>
+                <img class="img-fluid" alt=""
+                    src='https://dsgmedia.blob.core.windows.net/pub/2017/04/how-to-set-up-a-campsite.jpg'>
+                <% } %>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
